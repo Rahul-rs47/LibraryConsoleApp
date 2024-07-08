@@ -1,4 +1,6 @@
 /* Person Data Transactional Object */
+
+/* I have added some change in Person class */
 package con.lms.dto;
 
 import java.io.Serializable;//markable interface
