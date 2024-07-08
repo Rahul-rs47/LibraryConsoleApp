@@ -1,3 +1,4 @@
+/* Person Data Transactional Object */
 package con.lms.dto;
 
 import java.io.Serializable;//markable interface
