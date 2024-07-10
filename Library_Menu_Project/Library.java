@@ -9,6 +9,8 @@ import con.lms.dto.Member;
 import con.lms.dto.Staff;
 import con.lms.util.FileHelper;
 import con.lms.data.DataFactory;
+import con.lms.log.FileLogger;
+import con.lms.log.Logger;
 
 
 public class Library{
@@ -43,33 +45,6 @@ public class Library{
 					}
 					
 				}
-
-
-			public void finalize(){
-
-
-				Hashtable libraryClosingData = new Hashtable<String,Object>();
-
-				try{
-
-
-								libraryClosingData.put("book", books);
-								libraryClosingData.put("member", members);
-								libraryClosingData.put("staff", staffs);
-
-								FileHelper.writeData(libraryClosingData);
-
-								System.out.println("Library data updated successfully. Have a nice day ...");
-
-
-
-				}catch(Exception e){
-
-				}
-
-			}
-
-
 
 
 		public static void main(String args[]){
@@ -238,6 +213,10 @@ public class Library{
 														
 														String issuedBook = Library.issueBook(bookId,memberId,staffId);
 														System.out.println(issuedBook);
+
+
+														logTransaction(new FileLogger(), issuedBook);
+
 										 				break;
 
 										 			case 8 :
@@ -250,6 +229,8 @@ public class Library{
 														
 														String returnedBook = Library.returnBook(bookId,memberId,staffId);
 														System.out.println(returnedBook);
+														logTransaction(new FileLogger(), returnedBook);
+
 										 				break;
 
 
@@ -812,10 +793,11 @@ public class Library{
 
 
 
-
 		}catch(Exception e){
 			System.out.println("Library : getAllDetails: " + e);
 		}
+
+
 
 		return message;
 
@@ -899,6 +881,22 @@ public class Library{
 				}
 
 			}
+
+	public static int logTransaction(Logger logger, String transactionData){
+
+				int result = 0;
+				
+				try{
+
+					result = logger.logData(transactionData);
+
+				}catch(Exception e){
+					System.out.println("Library : logTransaction: " + e);
+				}
+
+		return result;
+
+	}
 
 }					
 

@@ -1,6 +1,6 @@
 package con.lms.dto;
 
-    import java.io.Serializable;//markable interface
+import java.io.Serializable;//markable interface
 
 public class Book implements Serializable{
 

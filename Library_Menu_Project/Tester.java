@@ -1,13 +1,23 @@
 package con.lms.test;
 
+import con.lms.util.Helper;
 import java.util.ArrayList;
-
 import con.lms.app.Library;
-
 import con.lms.dto.*;
+import java.io.*;  
 //import Member.*;
 class Tester{
 		public static void main(String args[]){
+
+
+				Tester.updateTransaction("transaction.text",  Helper.getCurretDateAndTime() + " : it is working as expected.");
+
+				System.out.println("Success ");
+
+
+
+
+
 
 			/*	Staff s1 = new Staff(1001,"roni","992","roni@roni.org");
 				Staff s2 = new Staff(1002,"bob","993","bob@bob.org");
@@ -46,7 +56,7 @@ class Tester{
 			*/
 
 			
-
+/*
 				Book searchedBook1 = Library.searchBook("stem","category");
 
 				if(searchedBook1 == null ){
@@ -69,6 +79,8 @@ class Tester{
 				}else{
 					System.out.println(searchedBook3);
 				}
+
+
 
 				*/
 	///////////////////****************************************************************
@@ -209,7 +221,7 @@ class Tester{
 
 			*/
 
-			
+			/*
 
 				System.out.println("Book list");
 				ArrayList<Book> bookList3 = Library.searchBook("91000000014","member");
@@ -252,7 +264,7 @@ class Tester{
 
 					*/
 
-
+/*
 				System.out.println("Issue Book");
 				String issuedBook = Library.issueBook(2,1007,5);
 
@@ -328,6 +340,26 @@ class Tester{
 
 				
 		}	
+
+
+
+	public static void updateTransaction(String fileName, String str) {  
+        try {  
+            // Create a BufferedWriter object with FileWriter to append to the file  
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));  
+              
+            // Write the string to the file and add a new line character  
+            writer.write(str);  
+            writer.newLine();  
+              
+            // Close the writer  
+            writer.close();  
+        }  
+        catch (IOException e) {  
+            // Catch any exceptions that occur and print the error message  
+            System.out.println("Exception occurred: " + e);  
+        }  
+    }  
 
 
 
